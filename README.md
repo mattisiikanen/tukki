@@ -41,14 +41,15 @@ Tästä viisastuneena päätin ottaa juurioikeudet käyttööni aktivoimalla ne 
 
 
 ### Syslog
-/var/log/syslog <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.
+/var/log/syslog <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.</br>
+
 Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpt-agent-ssh.socket: Succeeded.
-Kello: oikea, aikavyöhyke EET +2
-Jan 27 21:02:23 <- Tapahtumanaika
-matti-virtualmachine <- laitteen nimi
-systemd <- tapahtuman pääluokka
-881 <- systemd luokkaan kuuluvan tapahtuman koodi
-gpt-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti
+- Kello: oikea, aikavyöhyke EET +2
+- Jan 27 21:02:23 <- Tapahtumanaika
+- matti-virtualmachine <- laitteen nimi
+- systemd <- tapahtuman pääluokka
+- 881 <- systemd luokkaan kuuluvan tapahtuman koodi
+- gpt-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti </br>
 Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
 Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
 
@@ -57,14 +58,14 @@ Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut ty�
 Seuraavana oli vuorossa Auth.log, joka saatiin auki käyttämällä samaa vanhaa less komentoa: </br>
 ![Kuva3](https://user-images.githubusercontent.com/122887740/215200357-20e05fdc-1ed5-42d6-b222-345e9bda90d6.png)</br>
 
-/var/log/auth.log <- sisältää kirjautumisiin liittyvän lokituksen.
-sim. Jan 27 21:02:07 matti-virtualmachine lightmd pam-unix(lightdm-greeter:session): session opened for user lightdm (uid=117) by (uid=0)
-Kello: oikea, aikavyöhyke EET +2
-Jan 27 21:02:07 <- Tapahtumanaika
-matti-virtualmachine <- laitteen nimi
-lightdm<- tapahtuman pääluokka
-pam_unix(lightdm-greeter:session) <- lightdm luokkaan kuuluva aliluokka
-session opened for user lightdm (uid=117) by (uid=0) <- koodia ihmiselle selventävä teksti
+/var/log/auth.log <- sisältää kirjautumisiin liittyvän lokituksen.</br>
+Esim. Jan 27 21:02:07 matti-virtualmachine lightmd pam-unix(lightdm-greeter:session): session opened for user lightdm (uid=117) by (uid=0)
+- Kello: oikea, aikavyöhyke EET +2
+- Jan 27 21:02:07 <- Tapahtumanaika
+- matti-virtualmachine <- laitteen nimi
+- lightdm<- tapahtuman pääluokka
+- pam_unix(lightdm-greeter:session) <- lightdm luokkaan kuuluva aliluokka
+- session opened for user lightdm (uid=117) by (uid=0) <- koodia ihmiselle selventävä teksti</br>
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole kauheasti vielä historiaa.
 Loki sisältää tietoa siitä, että lightdm käyttäjällä on käynnistetty juurikäyttäjän uid=0 toimesta lightdm-greeter:session palvelu, joka tuo näkyviin käyttäjälle kirjautumisikkunan koneen käynnistyessä.
 
@@ -80,26 +81,26 @@ Generoin lokia lokiin /var/log/apache2/access.log käyttämällä Mozilla Firefo
 Vierailuni omalla sivullani generoi Access.log tiedostoon dataa:</br>
 ![Kuva5](https://user-images.githubusercontent.com/122887740/215201088-faf90857-c75e-4056-979a-d66c5987a8cc.png)</br>
 
-/var/log/apache2\access.log <- sisältää sivustolla tapahtuvien yhteyksien lokituksen.
-127.0.0.1 - - [Jan 27 21:29:25 +0200] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
-Kello: oikea, aikavyöhyke (+0200) EET +2
-Jan 27 21:29:25 <- Tapahtumanaika
-"GET / HTTP/1.1" <- sivuston tarjoama HTTP säännöstö
-"200 3380" <- Success code, eli sivusto latautui onnistuneesti
-"Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.
+/var/log/apache2\access.log <- sisältää sivustolla tapahtuvien yhteyksien lokituksen.</br>
+- 127.0.0.1 - - [Jan 27 21:29:25 +0200] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+- Kello: oikea, aikavyöhyke (+0200) EET +2
+- Jan 27 21:29:25 <- Tapahtumanaika
+- "GET / HTTP/1.1" <- sivuston tarjoama HTTP säännöstö
+- "200 3380" <- Success code, eli sivusto latautui onnistuneesti
+- "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.</br>
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
 Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
 Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 ![Kuva6](https://user-images.githubusercontent.com/122887740/215201523-a7e058ea-e045-479f-90fa-dc3c31570430.png)</br>
 
-/var/log/apache2\error.log <- sisältää Apache2 web-palvelimen toimintaan liittyvien virheiden lokituksen
+/var/log/apache2\error.log <- sisältää Apache2 web-palvelimen toimintaan liittyvien virheiden lokituksen</br>
 [Fri Jan 27 21:29:15.667234 2023] [mpm_event:notice] [pid 2509:tid 139778747977024] AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations
-Kello: oikea, aikavyöhyke (+0200) EET +2
-Jan 27 21:29:15 <- Tapahtumanaika
-[mpm_event:notice]: tapahtuman tyyppi
-[pid 2509:tid 139778747977024]: pid = process identifier & tid = thread identifier
-AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.
+- Kello: oikea, aikavyöhyke (+0200) EET +2
+- Jan 27 21:29:15 <- Tapahtumanaika
+- [mpm_event:notice]: tapahtuman tyyppi
+- [pid 2509:tid 139778747977024]: pid = process identifier & tid = thread identifier
+- AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.
 
 "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
