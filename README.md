@@ -114,7 +114,7 @@ Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
 https://smallstep.com/blog/command-line-secrets/
 
-Archlinux Wiki, 27.1.2023, LightDM (https://wiki.archlinux.org/title/LightDM)
+Archlinux Wiki, 27.1.2023, LightDM: https://wiki.archlinux.org/title/LightDM
 
 How to set up a localhost server with http protocol on apache [closed]:
 https://unix.stackexchange.com/questions/347532/how-to-set-up-a-localhost-server-with-http-protocol-on-apache
