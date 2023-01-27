@@ -1,6 +1,4 @@
-# tukki
-H4 tehtävää varten.
-
+# H4 - tukki
 
 ## Lukuläksy
 How to Handle Secrets on the Command Line
