@@ -27,9 +27,20 @@ Virtuaalikoneen speksit:
 - 50 Gb HDD
 - Generation 2 (Hyper-V pyytää määrittelemään)
 
-Aloitus 27.1.2023 klo 21.00
+## Aloitus 
+
+Aloitin tehtävät käynnistämällä virtuaalisen koneen 27.1.2023 klo 21.00.
+
+Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen /var/log/, jonka alka löytyi kaikki tehtävän lokitiedostot.
+
+Aloitin ensin syslogista avaamalla sen komennolla ```less syslog``` ja huomasin heti törmääväni ongelmaan: </br>
+![Kuva1](https://user-images.githubusercontent.com/122887740/215199535-335cca99-4e25-40c9-8dfe-4f1bac60fcd1.png)</br>
+
+Tästä viisastuneena päätin ottaa juurioikeudet käyttööni aktivoimalla ne komennolla ```sudo su```, komentokehote pyysi järjestelmänvalvojan tunnuksia, jotka syötin onnistuneesti. Tämän jälkeen siirryin avaamaan jälleen syslogia ```less syslog``` komennolla ja sain kuin sainkin lokitiedoston auki:</br>
+![Kuva2](https://user-images.githubusercontent.com/122887740/215200206-d84968ff-b3ab-4657-ab1c-135bcee14492.png)</br>
 
 
+### Syslog
 /var/log/syslog <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.
 Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpt-agent-ssh.socket: Succeeded.
 Kello: oikea, aikavyöhyke EET +2
@@ -40,6 +51,11 @@ systemd <- tapahtuman pääluokka
 gpt-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti
 Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
 Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
+
+
+### Auth.log
+Seuraavana oli vuorossa Auth.log, joka saatiin auki käyttämällä samaa vanhaa less komentoa: </br>
+![Kuva3](https://user-images.githubusercontent.com/122887740/215200357-20e05fdc-1ed5-42d6-b222-345e9bda90d6.png)</br>
 
 /var/log/auth.log <- sisältää kirjautumisiin liittyvän lokituksen.
 sim. Jan 27 21:02:07 matti-virtualmachine lightmd pam-unix(lightdm-greeter:session): session opened for user lightdm (uid=117) by (uid=0)
@@ -52,24 +68,58 @@ session opened for user lightdm (uid=117) by (uid=0) <- koodia ihmiselle selvent
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole kauheasti vielä historiaa.
 Loki sisältää tietoa siitä, että lightdm käyttäjällä on käynnistetty juurikäyttäjän uid=0 toimesta lightdm-greeter:session palvelu, joka tuo näkyviin käyttäjälle kirjautumisikkunan koneen käynnistyessä.
 
-Kuvasta näkee Sudo logit: Kuva 4
+Kuvasta näkee Sudo logit: </br>
+[Kuva4](https://user-images.githubusercontent.com/122887740/215200771-68a7a8e8-fc6e-4b1e-afe9-237c7f5f973b.png)</br>
+
+### Apache2 Access.log & Error.log
 
 Generoidakseni lokia kansioon /var/log/apache2/, tuli minun asentaa Apache2 rooli koneelle käyttämällä koodia sudo apt get install apache2.
-Generoin lokia lokiin /var/log/apache2/access.log käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin localhost:80, sain tulokseksi seuraavan: 
-Kuva 5.5
+Generoin lokia lokiin /var/log/apache2/access.log käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin localhost:80, sain tulokseksi seuraavan: </br>
+[Kuva5 5](https://user-images.githubusercontent.com/122887740/215200942-a85a481a-8884-458e-9903-3f8898628fa6.png) </br>
 
-Lähteet:
-Archlinux Wiki, 27.1.2023, LightDM (https://wiki.archlinux.org/title/LightDM)
+Vierailuni omalla sivullani generoi Access.log tiedostoon dataa:</br>
+![Kuva5](https://user-images.githubusercontent.com/122887740/215201088-faf90857-c75e-4056-979a-d66c5987a8cc.png)</br>
 
+/var/log/apache2\access.log <- sisältää sivustolla tapahtuvien yhteyksien lokituksen.
+127.0.0.1 - - [Jan 27 21:29:25 +0200] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
+Kello: oikea, aikavyöhyke (+0200) EET +2
+Jan 27 21:29:25 <- Tapahtumanaika
+"GET / HTTP/1.1" <- sivuston tarjoama HTTP säännöstö
+"200 3380" <- Success code, eli sivusto latautui onnistuneesti
+"Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.
+Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
+Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
+Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
+![Kuva6](https://user-images.githubusercontent.com/122887740/215201523-a7e058ea-e045-479f-90fa-dc3c31570430.png)</br>
 
+/var/log/apache2\error.log <- sisältää Apache2 web-palvelimen toimintaan liittyvien virheiden lokituksen
+[Fri Jan 27 21:29:15.667234 2023] [mpm_event:notice] [pid 2509:tid 139778747977024] AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations
+Kello: oikea, aikavyöhyke (+0200) EET +2
+Jan 27 21:29:15 <- Tapahtumanaika
+[mpm_event:notice]: tapahtuman tyyppi
+[pid 2509:tid 139778747977024]: pid = process identifier & tid = thread identifier
+AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.
 
+"Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.
+Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
+Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
 
 ## Lopetus
-Kyseinen kotitehtävä avasi paljon komentokehotteen maailmaa Linuxissa. Sen avulla voi selvästi tehdä kaikki toimenpiteet, toki harjoitukset olivat vain pintaraapaisu, mutta kyllä niistä oli itselle ainakin hyötyä. Tehtäviin meni kokonaisuudessaan noin 1,5h.
-
+Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1h.
 
 ## Lähteet:
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
 https://smallstep.com/blog/command-line-secrets/
+
+Archlinux Wiki, 27.1.2023, LightDM (https://wiki.archlinux.org/title/LightDM)
+
+How to set up a localhost server with http protocol on apache [closed]:
+https://unix.stackexchange.com/questions/347532/how-to-set-up-a-localhost-server-with-http-protocol-on-apache
+
+Wesley Chai & Kevin Ferguson, March 2021, HTTP (Hypertext Transfer Protocol):
+https://www.techtarget.com/whatis/definition/HTTP-Hypertext-Transfer-Protocol
+
+Difference between PID and TID:
+https://stackoverflow.com/questions/4517301/difference-between-pid-and-tid
