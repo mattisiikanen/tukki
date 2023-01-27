@@ -5,10 +5,10 @@ H4 tehtävää varten.
 ## Lukuläksy
 How to Handle Secrets on the Command Line
 Carl Tashian, 03.12.2021, https://smallstep.com/blog/command-line-secrets/
-- komentokehotteen tietoturvassa tulee olla tarkkana
-- pienikin virhe voi altistaa koodinpätkässä olevan tiedon
-- putkilla voidaan toimittaa tehokkaasti salattua tietoa
-- tunnustiedosto (Credential file), voidaan käyttää salatun tiedoston avaamiseen turvallisesti
+- Komentokehotteen tietoturvassa tulee olla tarkkana
+- Pienikin virhe voi altistaa koodinpätkässä olevan tiedon
+- Putkilla voidaan toimittaa tehokkaasti salattua tietoa
+- Tunnustiedosto (Credential file), voidaan käyttää salatun tiedoston avaamiseen turvallisesti
 - Ympäristömuuttujat (Environment Variables), eivät ole kovin tietoturvallisia paikkoja ylläpitää salaista tietoa
 - Esim. salasanojen käytössä tulee olla tarkkana, jotta ne eivät jää leikepöydälle / puskuriin odottamaan noutajaa
 - Linux kernelissä on mahdollista käyttää avainnippua (keyring), joka ei vuoda koskaan levylle
