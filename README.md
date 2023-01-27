@@ -1,8 +1,7 @@
 # H4 - tukki
 
 ## Lukuläksy
-How to Handle Secrets on the Command Line
-Carl Tashian, 03.12.2021, https://smallstep.com/blog/command-line-secrets/
+Lukuläksyä varten valitsin Carl Tashianin 3.12.2021 kirjoittaman artikkelin, jossa käsitellään salaisuuksien käsittelyä komentokehotteessa otsikolla: How to Handle Secrets on the Command Line (https://smallstep.com/blog/command-line-secrets/)
 - Komentokehotteen tietoturvassa tulee olla tarkkana
 - Pienikin virhe voi altistaa koodinpätkässä olevan tiedon
 - Putkilla voidaan toimittaa tehokkaasti salattua tietoa
