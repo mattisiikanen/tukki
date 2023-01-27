@@ -32,5 +32,5 @@ Virtuaalikoneen speksit:
 Kyseinen kotitehtävä avasi paljon komentokehotteen maailmaa Linuxissa. Sen avulla voi selvästi tehdä kaikki toimenpiteet, toki harjoitukset olivat vain pintaraapaisu, mutta kyllä niistä oli itselle ainakin hyötyä. Tehtäviin meni kokonaisuudessaan noin 1,5h.
 
 ## Lähteet:
-Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line
+Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
 https://smallstep.com/blog/command-line-secrets/
