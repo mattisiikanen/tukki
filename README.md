@@ -31,7 +31,7 @@ Virtuaalikoneen speksit:
 
 Aloitin tehtävät käynnistämällä virtuaalisen koneen 27.1.2023 klo 21.00.
 
-Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen /var/log/, jonka alka löytyi kaikki tehtävän lokitiedostot.
+Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen ```/var/log/```, jonka alka löytyi kaikki tehtävän lokitiedostot.
 
 Aloitin ensin syslogista avaamalla sen komennolla ```less syslog``` ja huomasin heti törmääväni ongelmaan: </br>
 ![Kuva1](https://user-images.githubusercontent.com/122887740/215199535-335cca99-4e25-40c9-8dfe-4f1bac60fcd1.png)</br>
@@ -41,7 +41,7 @@ Tästä viisastuneena päätin ottaa juurioikeudet käyttööni aktivoimalla ne 
 
 
 ### Syslog
-/var/log/syslog <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.</br>
+```/var/log/syslog``` <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.</br>
 
 Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpt-agent-ssh.socket: Succeeded.
 - Kello: oikea, aikavyöhyke EET +2
@@ -58,7 +58,7 @@ Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut ty�
 Seuraavana oli vuorossa Auth.log, joka saatiin auki käyttämällä samaa vanhaa less komentoa: </br>
 ![Kuva3](https://user-images.githubusercontent.com/122887740/215200357-20e05fdc-1ed5-42d6-b222-345e9bda90d6.png)</br>
 
-/var/log/auth.log <- sisältää kirjautumisiin liittyvän lokituksen.</br>
+```/var/log/auth.log``` <- sisältää kirjautumisiin liittyvän lokituksen.</br>
 Esim. Jan 27 21:02:07 matti-virtualmachine lightmd pam-unix(lightdm-greeter:session): session opened for user lightdm (uid=117) by (uid=0)
 - Kello: oikea, aikavyöhyke EET +2
 - Jan 27 21:02:07 <- Tapahtumanaika
@@ -74,14 +74,14 @@ Kuvasta näkee Sudo logit: </br>
 
 ### Apache2 Access.log & Error.log
 
-Generoidakseni lokia kansioon /var/log/apache2/, tuli minun asentaa Apache2 rooli koneelle käyttämällä koodia sudo apt get install apache2.
-Generoin lokia lokiin /var/log/apache2/access.log käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin localhost:80, sain tulokseksi seuraavan: </br>
+Generoidakseni lokia kansioon ```/var/log/apache2/```, tuli minun asentaa Apache2 rooli koneelle käyttämällä komoentoa ```sudo apt get install apache2```.
+Generoin lokia lokiin ```/var/log/apache2/access.log``` käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin ```localhost:80```, sain tulokseksi seuraavan: </br>
 ![Kuva5 5](https://user-images.githubusercontent.com/122887740/215259449-779b0cc4-58f5-44e9-ba6c-04b3951c45e7.png)</br>
 
 Vierailuni omalla sivullani generoi Access.log tiedostoon dataa:</br>
 ![Kuva5](https://user-images.githubusercontent.com/122887740/215201088-faf90857-c75e-4056-979a-d66c5987a8cc.png)</br>
 
-/var/log/apache2\access.log <- sisältää sivustolla tapahtuvien yhteyksien lokituksen.</br>
+```/var/log/apache2\access.log``` <- sisältää sivustolla tapahtuvien yhteyksien lokituksen.</br>
 - 127.0.0.1 - - [Jan 27 21:29:25 +0200] "GET / HTTP/1.1" 200 3380 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
 - Kello: oikea, aikavyöhyke (+0200) EET +2
 - Jan 27 21:29:25 <- Tapahtumanaika
@@ -94,7 +94,7 @@ Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa o
 Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 ![Kuva6](https://user-images.githubusercontent.com/122887740/215201523-a7e058ea-e045-479f-90fa-dc3c31570430.png)</br>
 
-/var/log/apache2\error.log <- sisältää Apache2 web-palvelimen toimintaan liittyvien virheiden lokituksen</br>
+```/var/log/apache2\error.log``` <- sisältää Apache2 web-palvelimen toimintaan liittyvien virheiden lokituksen</br>
 [Fri Jan 27 21:29:15.667234 2023] [mpm_event:notice] [pid 2509:tid 139778747977024] AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations
 - Kello: oikea, aikavyöhyke (+0200) EET +2
 - Jan 27 21:29:15 <- Tapahtumanaika
@@ -106,7 +106,10 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
 Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
+Lopetin hommat klo perjantaina 27.1.2023 klo 21:55.
+
 ## Itse aiheutettujen lokimerkintöjen luonti
+Hommat jatkuivat seuraavana aamuna lauantaina 28.1.2023 klo 11:06.</br>
 Tässä tehtävässä oli tarkoitus generoida lokitiedostoon tahallisesti lisälokia.
 Ensiksi päätin kokeilla, miltä näyttää tahallisesti väärin kirjoitettu salasana kirjautumisruudussa: </br>
 ![Kuva7](https://user-images.githubusercontent.com/122887740/215258286-ff3242c9-13c6-4da4-b2f0-9f04b388ae20.png) </br>
@@ -122,7 +125,7 @@ Kohde: Jan 28 11:06:59 matti-virtualmachine sudo: pam unix(sudo:auth): authentic
 Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
 Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
 
-Seuraavaksi yritin generoida virheilmoitusta sammuttamalla Apache2:n palvelun, mutta se ei tuottanut tulosta:</br>
+Seuraavaksi yritin generoida virheilmoitusta sammuttamalla Apache2:n palvelun (```/etc/init.d/apache2 stop ```), mutta se ei tuottanut tulosta:</br>
 ![Kuva8](https://user-images.githubusercontent.com/122887740/215258288-b2ac3674-0544-4831-b863-8e42b71a1971.png)</br>
 
 Koitin myös generoida lokia koittamalla sammuttaa Apache2 palvelun ilman juurioikeuksia:</br>
@@ -131,7 +134,7 @@ Ensimmäisestä juurioikeuksilla tehdystä palvelun sammutuksesta / uudelleenkä
 
 
 ## Lopetus
-Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1h.
+Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1,5h.
 
 ## Lähteet:
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
