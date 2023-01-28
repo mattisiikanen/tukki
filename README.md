@@ -113,7 +113,7 @@ Hommat jatkuivat seuraavana aamuna lauantaina 28.1.2023 klo 11:06.</br>
 Tässä tehtävässä oli tarkoitus generoida lokitiedostoon tahallisesti lisälokia.
 Ensiksi päätin kokeilla, miltä näyttää tahallisesti väärin kirjoitettu salasana kirjautumisruudussa: </br>
 ![Kuva7](https://user-images.githubusercontent.com/122887740/215258286-ff3242c9-13c6-4da4-b2f0-9f04b388ae20.png) </br>
-Kuten kuvasta näkee, syslogiin on kirjattu parikin merkintää. Ensimmäinen generoitui kirjautumisruudussa ja toinen tuli, kun ```sudo su``` komentoa käyttäessä kirjoitin tahalteen väärän salasanan ensiksi. </br>
+Kuten kuvasta näkee, syslogiin on kirjattu parikin merkintää. Ensimmäinen generoitui kirjautumisruudussa ja toinen tuli, kun ```sudo su``` komentoa käyttäessä kirjoitin tahallisesti väärän salasanan ensiksi. </br>
 
 Kohde: Jan 28 11:06:59 matti-virtualmachine sudo: pam unix(sudo:auth): authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis</br>
 - Kello: oikea, aikavyöhyke EET +2
