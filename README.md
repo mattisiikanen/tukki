@@ -120,7 +120,7 @@ Kohde: Jan 28 11:06:59 matti-virtualmachine sudo: pam unix(sudo:auth): authentic
 - matti-virtualmachine <- laitteen nimi
 - sudo <- tapahtuman pääluokka
 - pam unix(sudo:auth) <- sudo luokkaan kuuluva alaluokka
-- authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis <- itse tapahtuma, tässä näkee autentikoinnin epäonnistumisen, lokinimen, uid (unique identifier):n, euid=1000: Effective UID (prosessia ajavan käyttäjän ID), ruser=mattis: koneelle kirjautunut käyttäjä, rhost=: näyttää liittyvän etähallintaan (remote host), user=mattis: itse käyttäjä.  </br>
+- authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis <- itse tapahtuma, tässä näkee autentikoinnin epäonnistumisen, lokinimen, uid (unique identifier):n, euid=1000: Effective UID (prosessia ajavan käyttäjän ID), ruser=mattis: koneelle kirjautunut käyttäjä, rhost=: näyttää liittyvän etähallintaan (remote host), user=mattis: itse käyttäjä.</br></br>
 Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
 Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
 
