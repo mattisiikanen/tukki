@@ -132,7 +132,7 @@ Ensimmäisestä juurioikeuksilla tehdystä palvelun sammutuksesta / uudelleenkä
 
 
 ## Lopetus
-Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1,5h.
+Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lokia lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1,5h.
 
 ## Lähteet:
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
@@ -148,3 +148,6 @@ https://www.techtarget.com/whatis/definition/HTTP-Hypertext-Transfer-Protocol
 
 Difference between PID and TID:
 https://stackoverflow.com/questions/4517301/difference-between-pid-and-tid
+
+Difference between EUID and UID?:
+https://stackoverflow.com/questions/27669950/difference-between-euid-and-uid
