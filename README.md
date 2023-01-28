@@ -103,8 +103,7 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 - AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.
 - "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.</br>
 
-Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
-Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
+Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta. Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
 Lopetin hommat klo perjantaina 27.1.2023 klo 21:55.
 
