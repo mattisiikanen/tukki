@@ -105,7 +105,7 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta. Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten sen kävi.
 
-Lopetin hommat klo perjantaina 27.1.2023 klo 21:55.
+Lopetin hommat perjantaina 27.1.2023 klo 21:55.
 
 ## Itse aiheutettujen lokimerkintöjen luonti
 Hommat jatkuivat seuraavana aamuna lauantaina 28.1.2023 klo 11:06.</br>
