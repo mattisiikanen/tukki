@@ -42,13 +42,14 @@ Tästä viisastuneena päätin ottaa juurioikeudet käyttööni aktivoimalla ne 
 
 ```/var/log/syslog``` <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.</br>
 
-Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpt-agent-ssh.socket: Succeeded.
+Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpg-agent-ssh.socket: Succeeded.
 - Kello: oikea, aikavyöhyke EET +2
 - Jan 27 21:02:23 <- Tapahtumanaika
 - matti-virtualmachine <- laitteen nimi
 - systemd <- tapahtuman pääluokka
 - 881 <- systemd luokkaan kuuluvan tapahtuman koodi
-- gpt-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti </br>
+- gpg-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti </br>
+Kyseessä on daemon, jonka tehtävänä käsitellä ja puskuroida salasanoja avainnipussa. Eli tässä tapauksessa loki ilmoittaa puskuroinnin ja käsittelyn onnistuneen hyvin.</br>
 Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
 Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
 
@@ -100,8 +101,10 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 - Jan 27 21:29:15 <- Tapahtumanaika
 - [mpm_event:notice]: tapahtuman tyyppi
 - [pid 2509:tid 139778747977024]: pid = process identifier & tid = thread identifier
-- AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.
-- "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0" <- tämä kertoo selaimen version ja millä alustalla selainta ajetaan.</br>
+- AH00489: Apache/2.4.54 (Debian) Configured -- resuming normal operations = Apache2:n lokitukseen liittyvä koodi, tässä tapauksessa kyseessä on perus operointiin liittyvä koodi. Samassa rimpsussa näkee myös Apachen version 2.4.54.</br>
+
+Tässä lokissa tulee selville Apache2-palvelun operoinnin jatkumisesta normaalitilassa.
+
 
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta. Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten sen kävi.
 
@@ -122,6 +125,8 @@ Kohde: Jan 28 11:06:59 matti-virtualmachine sudo: pam unix(sudo:auth): authentic
 - pam unix(sudo:auth) <- sudo luokkaan kuuluva alaluokka
 - authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis <- itse tapahtuma, tässä näkee autentikoinnin epäonnistumisen, lokinimen, uid (unique identifier):n, euid=1000: Effective UID (prosessia ajavan käyttäjän ID), ruser=mattis: koneelle kirjautunut käyttäjä, rhost=: näyttää liittyvän etähallintaan (remote host), user=mattis: itse käyttäjä.
 
+Lokitieto pitää sisällään epäonnistuneen autentikoinnin siitä, kun käyttäjä mattis on yrittänyt ajaa komennon ```sudo su``` ja syöttänyt väärän salasanan.
+
 
 Seuraavaksi yritin generoida virheilmoitusta sammuttamalla Apache2:n palvelun (```/etc/init.d/apache2 stop ```), mutta se ei tuottanut tulosta:</br>
 ![Kuva8](https://user-images.githubusercontent.com/122887740/215258288-b2ac3674-0544-4831-b863-8e42b71a1971.png)</br>
@@ -137,6 +142,8 @@ Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen
 ## Lähteet:
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
 https://smallstep.com/blog/command-line-secrets/
+
+Archlinux Wiki, 14.12023, GnuPG: https://wiki.archlinux.org/title/GnuPG
 
 Archlinux Wiki, 27.1.2023, LightDM: https://wiki.archlinux.org/title/LightDM
 
