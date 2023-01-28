@@ -49,11 +49,9 @@ Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpg-agent-ssh.socket: S
 - systemd <- tapahtuman pääluokka
 - 881 <- systemd luokkaan kuuluvan tapahtuman koodi
 - gpg-agent-ssh.socket: Succeeded. <- koodia ihmiselle selventävä teksti </br>
-Kyseessä on daemon, jonka tehtävänä käsitellä ja puskuroida salasanoja avainnipussa. Eli tässä tapauksessa loki ilmoittaa puskuroinnin ja käsittelyn onnistuneen hyvin.</br>
 
 
-Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
-Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
+Kyseessä on daemon, jonka tehtävänä käsitellä ja puskuroida salasanoja avainnipussa. Eli tässä tapauksessa loki ilmoittaa puskuroinnin ja käsittelyn onnistuneen hyvin. Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa. Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
 
 
 ### Auth.log
