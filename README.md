@@ -67,6 +67,8 @@ Esim. Jan 27 21:02:07 matti-virtualmachine lightmd pam-unix(lightdm-greeter:sess
 - pam_unix(lightdm-greeter:session) <- lightdm luokkaan kuuluva aliluokka
 - session opened for user lightdm (uid=117) by (uid=0) <- koodia ihmiselle selventävä teksti</br>
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole kauheasti vielä historiaa.
+
+
 Loki sisältää tietoa siitä, että lightdm käyttäjällä on käynnistetty juurikäyttäjän uid=0 toimesta lightdm-greeter:session palvelu, joka tuo näkyviin käyttäjälle kirjautumisikkunan koneen käynnistyessä.
 
 Kuvasta näkee Sudo logit: </br>
