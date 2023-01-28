@@ -106,6 +106,29 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta
 Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten kävi.
 
+## Itse aiheutettujen lokimerkintöjen luonti
+Tässä tehtävässä oli tarkoitus generoida lokitiedostoon tahallisesti lisälokia.
+Ensiksi päätin kokeilla, miltä näyttää tahallisesti väärin kirjoitettu salasana kirjautumisruudussa: </br>
+![Kuva7](https://user-images.githubusercontent.com/122887740/215258286-ff3242c9-13c6-4da4-b2f0-9f04b388ae20.png) </br>
+Kuten kuvasta näkee, syslogiin on kirjattu parikin merkintää. Ensimmäinen generoitui kirjautumisruudussa ja toinen tuli, kun ```sudo su``` komentoa käyttäessä kirjoitin tahalteen väärän salasanan ensiksi. </br>
+
+Kohde: Jan 28 11:06:59 matti-virtualmachine sudo: pam unix(sudo:auth): authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis</br>
+- Kello: oikea, aikavyöhyke EET +2
+- Jan 28 11:06:59 <- Tapahtumanaika
+- matti-virtualmachine <- laitteen nimi
+- sudo <- tapahtuman pääluokka
+- pam unix(sudo:auth) <- sudo luokkaan kuuluva alaluokka
+- authentication failure; logname= uid=1000 euid=0 tty=/dev/pts/0 ruser=mattis rhost= user=mattis <- itse tapahtuma, tässä näkee autentikoinnin epäonnistumisen, lokinimen, uid (unique identifier):n, euid=1000: Effective UID (prosessia ajavan käyttäjän ID), ruser=mattis: koneelle kirjautunut käyttäjä, rhost=: näyttää liittyvän etähallintaan (remote host), user=mattis: itse käyttäjä.  </br>
+Lokia oli tosi paljon, kaiken selvittämiseen menisi hyvin paljon aikaa.
+Ymmärsin pääsääntöisesti kaiken, mitä lokissa on, koska olen joutunut työssäni jonkin verran käymään läpi erilaisia lokitapahtumia.
+
+Seuraavaksi yritin generoida virheilmoitusta sammuttamalla Apache2:n palvelun, mutta se ei tuottanut tulosta:</br>
+![Kuva8](https://user-images.githubusercontent.com/122887740/215258288-b2ac3674-0544-4831-b863-8e42b71a1971.png)</br>
+
+Koitin myös generoida lokia koittamalla sammuttaa Apache2 palvelun ilman juurioikeuksia:</br>
+![Kuva9](https://user-images.githubusercontent.com/122887740/215258292-33bd1282-b807-4468-b8c0-e6235df3c863.png)</br>
+Ensimmäisestä juurioikeuksilla tehdystä palvelun sammutuksesta / uudelleenkäynnistyksestä tuli vain onnistunut merkintä lokiin. Toisesta yrityksestä ei tullut lokiin mitään merkintää, tutkin asiaa netistä ja siellä mainittiin, että lokin ilmestymistä varten tulisi ottaa käyttöön laajempi audit esim. kolmannen osapuolen lisäosalla.
+
 
 ## Lopetus
 Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1h.
