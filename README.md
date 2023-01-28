@@ -31,7 +31,7 @@ Virtuaalikoneen speksit:
 
 Aloitin tehtävät käynnistämällä virtuaalisen koneen 27.1.2023 klo 21.00.
 
-Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen ```/var/log/```, jonka alka löytyi kaikki tehtävän lokitiedostot.
+Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen ```/var/log/```, jonka alta löytyi kaikki tehtävän lokitiedostot.
 
 Aloitin ensin syslogista avaamalla sen komennolla ```less syslog``` ja huomasin heti törmääväni ongelmaan: </br>
 ![Kuva1](https://user-images.githubusercontent.com/122887740/215199535-335cca99-4e25-40c9-8dfe-4f1bac60fcd1.png)</br>
