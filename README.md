@@ -69,7 +69,8 @@ Lokia ei ollut paljon, koska virtuaalikoneella ei ole kauheasti vielä historiaa
 Loki sisältää tietoa siitä, että lightdm käyttäjällä on käynnistetty juurikäyttäjän uid=0 toimesta lightdm-greeter:session palvelu, joka tuo näkyviin käyttäjälle kirjautumisikkunan koneen käynnistyessä.
 
 Kuvasta näkee Sudo logit: </br>
-![Kuva4](https://user-images.githubusercontent.com/122887740/215260013-03bfd125-57da-49db-a1f7-9b310accf355.png)</br>
+![Kuva4](https://user-images.githubusercontent.com/122887740/215260043-55e91b5e-bf26-4600-a3b4-de03e6be4864.png)</br>
+
 
 ### Apache2 Access.log & Error.log
 
