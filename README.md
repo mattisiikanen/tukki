@@ -69,11 +69,11 @@ Lokia ei ollut paljon, koska virtuaalikoneella ei ole kauheasti vielä historiaa
 Loki sisältää tietoa siitä, että lightdm käyttäjällä on käynnistetty juurikäyttäjän uid=0 toimesta lightdm-greeter:session palvelu, joka tuo näkyviin käyttäjälle kirjautumisikkunan koneen käynnistyessä.
 
 Kuvasta näkee Sudo logit: </br>
-![Kuva4](https://user-images.githubusercontent.com/122887740/215259441-1dd1ca3e-80d2-4bc2-a80c-939442b04d11.png)</br>
+![Kuva4](https://user-images.githubusercontent.com/122887740/215260013-03bfd125-57da-49db-a1f7-9b310accf355.png)</br>
 
 ### Apache2 Access.log & Error.log
 
-Generoidakseni lokia kansioon ```/var/log/apache2/```, tuli minun asentaa Apache2 rooli koneelle käyttämällä komoentoa ```sudo apt get install apache2```.
+Generoidakseni lokia kansioon ```/var/log/apache2/```, tuli minun ensin asentaa Apache2 rooli koneelle käyttämällä komoentoa ```sudo apt get install apache2```.
 Generoin lokia lokiin ```/var/log/apache2/access.log``` käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin ```localhost:80```, sain tulokseksi seuraavan: </br>
 ![Kuva5 5](https://user-images.githubusercontent.com/122887740/215259449-779b0cc4-58f5-44e9-ba6c-04b3951c45e7.png)</br>
 
