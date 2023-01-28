@@ -28,11 +28,11 @@ Virtuaalikoneen speksit:
 - Generation 2 (Hyper-V pyytää määrittelemään)
 
 ## Aloitus 
+Tehtävän tarkoituksena oli löytää opettajan pyytämät lokitiedostot ja navigoida sinne käyttäen komentokehotetta.
+Aloitin tehtävät käynnistämällä virtuaalisen koneen perjantaina 27.1.2023 klo 21.00. Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen ```/var/log/```, jonka alta löytyi oletuksena kaikki tehtävän lokitiedostot, paitsi Apache2:n lokit, tästä lisää myöhemmässä vaiheessa.
 
-Aloitin tehtävät käynnistämällä virtuaalisen koneen 27.1.2023 klo 21.00.
 
-Koneelle kirjautumisen jälkeen avasin komentokehotteen ja navigoin siellä kohteeseen ```/var/log/```, jonka alta löytyi kaikki tehtävän lokitiedostot.
-
+### Syslog
 Aloitin ensin syslogista avaamalla sen komennolla ```less syslog``` ja huomasin heti törmääväni ongelmaan: </br>
 ![Kuva1](https://user-images.githubusercontent.com/122887740/215199535-335cca99-4e25-40c9-8dfe-4f1bac60fcd1.png)</br>
 
@@ -40,7 +40,6 @@ Tästä viisastuneena päätin ottaa juurioikeudet käyttööni aktivoimalla ne 
 ![Kuva2](https://user-images.githubusercontent.com/122887740/215200206-d84968ff-b3ab-4657-ab1c-135bcee14492.png)</br>
 
 
-### Syslog
 ```/var/log/syslog``` <- löytyy käynnistyksestä, virta-asetuksiin, sisältää myös onnistumiset ja virheet. Toisin sanoen läjä, johon menee kategorisoimattomat järjestelmän tapahtumat.</br>
 
 Esim. Jan 27 21:02:23 matti-virtualmachine systemd[881]: gpt-agent-ssh.socket: Succeeded.
