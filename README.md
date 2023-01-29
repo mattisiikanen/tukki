@@ -77,7 +77,7 @@ Kuvasta näkee Sudo logit: </br>
 
 ### Apache2 Access.log & Error.log
 
-Generoidakseni lokia kansioon ```/var/log/apache2/```, tuli minun ensin asentaa Apache2 rooli koneelle käyttämällä komoentoa ```sudo apt get install apache2```.
+Generoidakseni lokia kansioon ```/var/log/apache2/```, tuli minun ensin asentaa Apache2 rooli koneelle käyttämällä komentoa ```sudo apt get install apache2```.
 Generoin lokia lokiin ```/var/log/apache2/access.log``` käyttämällä Mozilla Firefox selainta ja kirjoittamalla osoiteriviin ```localhost:80```, sain tulokseksi seuraavan: </br>
 ![Kuva5 5](https://user-images.githubusercontent.com/122887740/215259449-779b0cc4-58f5-44e9-ba6c-04b3951c45e7.png)</br>
 
