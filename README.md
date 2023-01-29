@@ -140,7 +140,7 @@ Ensimmäisestä juurioikeuksilla tehdystä palvelun sammutuksesta / uudelleenkä
 
 
 ## Lopetus
-Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa lokeja ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lokia lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1,5h.
+Kyseinen tehtävä avasi lokituksen maailmaa toisesta näkökulmasta, koska olen tutkinut lokeja graafisella käyttöliittymällä esim. Windowsissa ja siellä ne näyttävät erilaiselta. Toki pitää muistaa, että kaikki lokit maailmassa onneksi käyttävät samanlaista runkoa, eli jos osaat jotain lokia lukea, niin osaat lukea myös toista lokia. Hommiin meni tällä erää n. 1,5h.
 
 ## Lähteet:
 Carl Tashian, 03.12.2021, How to Handle Secrets on the Command Line: 
