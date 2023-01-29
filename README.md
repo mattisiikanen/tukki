@@ -108,7 +108,8 @@ Access.log tiedoston jälkeen päätin vielä kurkata Error.log tiedostoa: </br>
 Tässä lokissa tulee selville Apache2-palvelun operoinnin jatkumisesta normaalitilassa.
 
 
-Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta. Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten sen kävi.
+Lokia ei ollut paljon, koska virtuaalikoneella ei ole aiemmin vielä hostattu Apache2 webpalvelinta.
+Loki pitää sisällään tietoa siitä mitä kaikkea kirjautuneessa sessiossa on tapahtunut ja miten sen kävi.
 
 Lopetin hommat perjantaina 27.1.2023 klo 21:55.
 
